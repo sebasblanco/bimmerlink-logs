@@ -69,6 +69,9 @@ def build_long(p):
 # ── wide format (BimmerLink wide / comma export) ──────────────────────────────
 
 WIDE_PID = {
+    "rpm":          ["Engine speed"],
+    "speed":        ["Actual speed"],
+    "throttle":     ["Throttle valve angle from potentiometer 1"],
     "boost":        ["Boost pressure"],
     "coolant":      ["Coolant temperature"],
     "maf":          ["Air mass flow"],
@@ -340,7 +343,10 @@ function interval() {{ return Math.round(1000 / speed); }}
 function tick() {{
   const next = +slider.value + 1;
   if (next > +slider.max) {{ stop(); return; }}
-  slider.value = next; update(next);
+  slider.value = next;
+  graphSliderIdx = next;
+  update(next);
+  for (const c of Object.values(chartInstances)) c.update("none");
 }}
 function play() {{
   playing = true; btnPlay.innerHTML = "&#9646;&#9646;";
