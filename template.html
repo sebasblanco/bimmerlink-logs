@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BimmerLink Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="/dashboard.css">
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <span class="log-label">BimmerLink</span>
+    <span class="sep">/</span>
+    <span class="current-time" id="current-time">--:--:--</span>
+    <select id="log-select"></select>
+  </div>
+  <div class="slider-row">
+    <span class="bound-lbl" id="lbl-start">--:--</span>
+    <div class="slider-wrap">
+      <div class="slider-progress" id="slider-progress"></div>
+      <input type="range" id="slider" min="0" max="0" value="0" step="1">
+    </div>
+    <span class="bound-lbl" id="lbl-end">--:--</span>
+  </div>
+  <div class="controls">
+    <button class="btn-play" id="btn-play">&#9654;</button>
+    <div class="speed-btns">
+      <button class="btn-speed" data-speed="0.5">0.5x</button>
+      <button class="btn-speed active" data-speed="1">1x</button>
+      <button class="btn-speed" data-speed="2">2x</button>
+      <button class="btn-speed" data-speed="5">5x</button>
+    </div>
+  </div>
+</header>
+
+<div id="view-graph">
+  <div class="graph-rpm-wrap">
+    <div class="graph-rpm-label">Engine RPM</div>
+    <canvas id="gc-rpm"></canvas>
+  </div>
+  <div class="charts-grid" id="charts-grid"></div>
+</div>
+
+<script src="/dashboard.js"></script>
+</body>
+</html>
